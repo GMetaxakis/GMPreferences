@@ -1,6 +1,35 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+
+    bintrayRepo = "GMPreferences"
+    bintrayName = "GMPreferences"
+
+    publishedGroupId = 'metax.geo.gmprefslib'
+    libraryName = 'gmprefslib'
+    artifact = 'gmprefslib'
+
+    libraryDescription = ''
+
+    siteUrl = 'https://github.com/MeTaXaS4/GMPreferences'
+    gitUrl = 'https://github.com/MeTaXaS4/GMPreferences.git'
+
+    libraryVersion = '1.0'
+
+    developerId = 'MeTaXaS4'
+    developerName = 'Georgios Metaksakis'
+    developerEmail = 'metaxas4@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://opensource.org/licenses/mit-license.php'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 29
 
@@ -28,4 +57,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.core:core-ktx:1.0.2'
+}
+
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/install.gradle'
+    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/bintray.gradle'
 }
